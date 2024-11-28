@@ -19,6 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Future Rafay | shad cn Demo</title>
+        <link rel="shortcut icon" href="https://vercel.com/favicon.ico" type="image/x-icon" />
+      </head>
       <body>
         {/* Sidebar Provider wraps the sidebar components */}
         <SidebarProvider>
@@ -27,10 +31,10 @@ export default function RootLayout({
             {/* Header component */}
             <Header />
             {/* Sidebar Trigger button */}
-            <SidebarTrigger />
+            
             {/* Main content */}
             {children}
-            
+
             {/* Toaster for notifications */}
             <Toaster />
             <Footer />

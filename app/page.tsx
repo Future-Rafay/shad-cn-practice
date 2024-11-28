@@ -5,6 +5,7 @@ import {
   AccordionDemo,
   AlertDemo,
   AlertDialogDemo,
+  BreadcrumbDemo,
   ContextMenuDemo,
   DatePickerDemo,
   DatePickerWithRange,
@@ -223,13 +224,23 @@ const page = () => {
             <AccordionDemo />
           </div>
           <div className="col-span-1 row-span-1 p-4 border-2 border-solid border-black flex flex-col h-full">
+            <h3 className="text-xl font-semibold mb-2">BreadCrumb Demo</h3>
+            <p className="text-sm mb-4">
+              Displays the path to the current resource using a hierarchy of
+              links.
+            </p>
+            <div className="flex items-center justify-center h-full">
+            <BreadcrumbDemo />
+            </div>
+          </div>
+          <div className="col-span-1 row-span-1 p-4 border-2 border-solid border-black flex flex-col h-full">
             <h3 className="text-xl font-semibold mb-2">Alert Dialog Demo</h3>
             <p className="text-sm mb-4">
               A modal dialog that interrupts the user with important content and
               expects a response.
             </p>
             <div className="flex items-center justify-center h-full">
-            <AlertDialogDemo />
+              <AlertDialogDemo />
             </div>
           </div>
           <div className="col-span-1 row-span-1 p-4 border-2 border-solid border-black flex flex-col h-full">

@@ -36,6 +36,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Calendar } from "@/components/ui/calendar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -151,7 +159,7 @@ export function DatePickerDemo() {
           variant="outline"
           className={cn(
             "w-[240px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            !date && "text-muted-foreground mb-4 sm:mb-0"
           )}
         >
           <CalendarIcon />
@@ -715,9 +723,9 @@ export function SelectDemo() {
 }
 export function SliderDemo() {
   return (
-    <div className="flex flex-col  justify-evenly h-full">
-      <Slider defaultValue={[50]} max={100} step={1} className={"w-[60%]"} />
-      <Slider defaultValue={[33]} max={100} step={1} className={"w-[90%]"} />
+    <div className="flex flex-col justify-evenly h-full">
+      <Slider defaultValue={[50]} max={100} step={1} className={"w-[60%] mb-4"} />
+      <Slider defaultValue={[33]} max={100} step={1} className={"w-[90%] mb-4"} />
       <Slider defaultValue={[94]} max={100} step={1} className={"w-[90%]"} />
     </div>
   );
@@ -744,7 +752,7 @@ export function ToastDemo() {
 }
 export function SheetDemo() {
   return (
-    <div className="grid grid-cols-2 grid-rows-2 gap-7 p-6">
+    <div className="grid sm:grid-cols-2 sm:grid-rows-2 gap-7 p-6">
       {/* Sheet 1: From Right */}
       <Sheet>
         <SheetTrigger asChild>
@@ -1059,7 +1067,7 @@ export function PaginationDemo() {
             <PaginationEllipsis className="px-4 py-2 text-gray-600">
               ...
             </PaginationEllipsis>
-          </PaginationItem>
+          </PaginationItem> 
           <PaginationItem>
             <PaginationNext
               href="#"
@@ -1186,4 +1194,22 @@ export function AlertDialogDemo() {
     </AlertDialog>
   );
 }
-  
+export function BreadcrumbDemo() {
+  return (
+    <Breadcrumb className="ml-4 pb-4">
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
