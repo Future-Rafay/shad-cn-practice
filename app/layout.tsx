@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 
 import Header from "@/components/Header";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
 import "./globals.css";

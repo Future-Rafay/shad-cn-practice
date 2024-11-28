@@ -67,7 +67,6 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
@@ -248,7 +247,7 @@ export function DialogDemo() {
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&#39;re done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -764,7 +763,7 @@ export function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&#39;re done.
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">
@@ -810,7 +809,7 @@ export function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&#39;re done.
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">
@@ -856,7 +855,7 @@ export function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&#39;re done.
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">
@@ -902,7 +901,7 @@ export function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
+              Make changes to your profile here. Click save when you&#39;re done.
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">
@@ -1153,7 +1152,7 @@ export function AccordionDemo() {
       <AccordionItem value="item-3">
         <AccordionTrigger>Is it animated?</AccordionTrigger>
         <AccordionContent>
-          Yes. It's animated by default, but you can disable it if you prefer.
+          Yes. It&#39;s animated by default, but you can disable it if you prefer.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
