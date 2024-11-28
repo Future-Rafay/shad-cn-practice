@@ -5,6 +5,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Next.js",
@@ -29,8 +30,10 @@ export default function RootLayout({
             <SidebarTrigger />
             {/* Main content */}
             {children}
+            
             {/* Toaster for notifications */}
             <Toaster />
+            <Footer />
           </main>
         </SidebarProvider>
       </body>

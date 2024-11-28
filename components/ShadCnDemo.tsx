@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { format, addDays } from "date-fns";
 import {
@@ -19,6 +18,23 @@ import { cn } from "@/lib/utils";
 
 // UI Components
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -142,7 +158,10 @@ export function DatePickerDemo() {
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent
+        className="w-auto p-0 bg-white border border-gray-300 shadow-md rounded-md"
+        align="start"
+      >
         <Calendar
           mode="single"
           selected={date}
@@ -188,7 +207,10 @@ export function DatePickerWithRange({
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent
+          className="w-auto p-0 bg-white border border-gray-300 shadow-md rounded-md"
+          align="start"
+        >
           <Calendar
             initialFocus
             mode="range"
@@ -206,79 +228,89 @@ export function DialogDemo() {
   return (
     <div className="flex items-center justify-center h-full">
       <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            className="bg-white border-gray-300 text-gray-800 hover:bg-gray-100"
+          >
+            Edit Profile
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px] bg-white border border-gray-300 rounded-md p-6 shadow-lg">
+          <DialogHeader>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>
+              Make changes to your profile here. Click save when you're done.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right text-gray-800">
+                Name
+              </Label>
+              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right text-gray-800">
+                Username
+              </Label>
+              <Input id="username" value="@peduarte" className="col-span-3" />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          <DialogFooter>
+            <Button
+              type="submit"
+              className="bg-blue-500 text-white hover:bg-blue-600"
+            >
+              Save changes
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
-    
   );
 }
 export function HoverCardDemo() {
   return (
-    
-      <div className="flex items-center justify-center h-full">
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <Button variant="link">@nextjs</Button>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <div className="flex justify-between space-x-4">
-              <Avatar>
-                <AvatarImage src="https://github.com/vercel.png" />
-                <AvatarFallback>VC</AvatarFallback>
-              </Avatar>
-              <div className="space-y-1">
-                <h4 className="text-sm font-semibold">@nextjs</h4>
-                <p className="text-sm">
-                  The React Framework – created and maintained by @vercel.
-                </p>
-                <div className="flex items-center pt-2">
-                  <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />{" "}
-                  <span className="text-xs text-muted-foreground">
-                    Joined December 2021
-                  </span>
-                </div>
+    <div className="flex items-center justify-center h-full">
+      <HoverCard>
+        <HoverCardTrigger asChild>
+          <Button variant="link" className="text-blue-600 hover:underline">
+            @nextjs
+          </Button>
+        </HoverCardTrigger>
+        <HoverCardContent className="w-80 bg-white border border-gray-300 shadow-md p-4 rounded-md">
+          <div className="flex justify-between space-x-4">
+            <Avatar>
+              <AvatarImage src="https://github.com/vercel.png" />
+              <AvatarFallback>VC</AvatarFallback>
+            </Avatar>
+            <div className="space-y-1">
+              <h4 className="text-sm font-semibold text-gray-800">@nextjs</h4>
+              <p className="text-sm text-gray-600">
+                The React Framework – created and maintained by @vercel.
+              </p>
+              <div className="flex items-center pt-2">
+                <CalendarIcon className="mr-2 h-4 w-4 opacity-70 text-gray-500" />
+                <span className="text-xs text-muted-foreground">
+                  Joined December 2021
+                </span>
               </div>
             </div>
-          </HoverCardContent>
-        </HoverCard> </div>
-    
+          </div>
+        </HoverCardContent>
+      </HoverCard>
+    </div>
   );
 }
 export function ContextMenuDemo() {
   return (
     <div className="flex items-center gap-4">
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border-4 border-dashed text-base">
+        <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border-4 border-dashed text-base text-gray-800 hover:bg-gray-100">
           Right click here
         </ContextMenuTrigger>
-        <ContextMenuContent className="w-64">
+        <ContextMenuContent className="w-64 bg-white border border-gray-300 shadow-md rounded-md">
           <ContextMenuItem inset>
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
@@ -321,17 +353,7 @@ export function ContextMenuDemo() {
           </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>
-      <ContextMenu>
-        <ContextMenuTrigger className="bg-red-400 p-2">Right click</ContextMenuTrigger>
-        <ContextMenuContent>
-          <ContextMenuItem>Profile</ContextMenuItem>
-          <ContextMenuItem>Billing</ContextMenuItem>
-          <ContextMenuItem>Team</ContextMenuItem>
-          <ContextMenuItem>Subscription</ContextMenuItem>
-        </ContextMenuContent>
-      </ContextMenu>
-      </div>
-  
+    </div>
   );
 }
 const data = [
@@ -385,106 +407,96 @@ export function DrawerDemo() {
   return (
     <div className="flex items-center justify-center h-full">
       <Drawer>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Open Drawer</Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-          </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">Decrease</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
+        <DrawerTrigger asChild>
+          <Button variant="outline">Open Drawer</Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <div className="mx-auto w-full max-w-sm">
+            <DrawerHeader>
+              <DrawerTitle>Move Goal</DrawerTitle>
+              <DrawerDescription>
+                Set your daily activity goal.
+              </DrawerDescription>
+            </DrawerHeader>
+            <div className="p-4 pb-0">
+              <div className="flex items-center justify-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 shrink-0 rounded-full"
+                  onClick={() => onClick(-10)}
+                  disabled={goal <= 200}
+                >
+                  <Minus />
+                  <span className="sr-only">Decrease</span>
+                </Button>
+                <div className="flex-1 text-center">
+                  <div className="text-7xl font-bold tracking-tighter">
+                    {goal}
+                  </div>
+                  <div className="text-[0.70rem] uppercase text-muted-foreground">
+                    Calories/day
+                  </div>
                 </div>
-                <div className="text-[0.70rem] uppercase text-muted-foreground">
-                  Calories/day
-                </div>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 shrink-0 rounded-full"
+                  onClick={() => onClick(10)}
+                  disabled={goal >= 400}
+                >
+                  <Plus />
+                  <span className="sr-only">Increase</span>
+                </Button>
               </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">Increase</span>
-              </Button>
+              <div className="mt-3 h-[120px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={data}>
+                    <Bar
+                      dataKey="goal"
+                      style={
+                        {
+                          fill: "hsl(var(--foreground))",
+                          opacity: 0.9,
+                        } as React.CSSProperties
+                      }
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
-            <div className="mt-3 h-[120px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data}>
-                  <Bar
-                    dataKey="goal"
-                    style={
-                      {
-                        fill: "hsl(var(--foreground))",
-                        opacity: 0.9,
-                      } as React.CSSProperties
-                    }
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            <DrawerFooter>
+              <Button>Submit</Button>
+              <DrawerClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
           </div>
-          <DrawerFooter>
-            <Button>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
-    </Drawer>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 }
-export function toggleDemo() {
+export function ToggleDemo() {
   return (
-    <div className="flex flex-col items-center h-full justify-evenly">
-      <div className="flex items-center w-full justify-evenly">
+    <div className="flex flex-col items-center h-full justify-evenly p-4">
+      <div className="flex items-center space-x-6">
         <Toggle aria-label="Toggle italic">
-          <Bold className="h-4 w-4" />
+          <Bold className="h-4 w-4 text-gray-700" />
         </Toggle>
-        <Separator className="bg-red-500" orientation="vertical" />
+        <Separator className="bg-gray-300 h-10" orientation="vertical" />
         <Toggle variant="outline" aria-label="Toggle italic">
-          <Italic />
+          <Italic className="h-4 w-4 text-gray-700" />
         </Toggle>
-        <Separator className="bg-red-500" orientation="vertical" />
+        <Separator className="bg-gray-300 h-10" orientation="vertical" />
         <Toggle aria-label="Toggle italic">
-          <Italic />
+          <Italic className="h-4 w-4 text-gray-700" />
           Italic
         </Toggle>
-        <Separator className="bg-red-500" orientation="vertical" />
-        <Toggle size="sm" variant="default" aria-label="Toggle italic">
-          <Italic />
-        </Toggle>
-        <Separator className="bg-red-500" orientation="vertical" />
-        <Toggle size="lg" aria-label="Toggle italic">
-          <Italic />
-        </Toggle>
-        <Separator className="bg-red-500" orientation="vertical" />
-        <Toggle aria-label="Toggle italic" disabled>
-          <Underline className="h-4 w-4" />
-        </Toggle>
       </div>
-      <Separator className="bg-red-500 my-4" />
-      <div>
-        <ToggleGroup type="multiple">
+      <Separator className="bg-gray-300 my-4" />
+      <div className="flex space-x-4">
+        <ToggleGroup type="multiple" aria-label="Text formatting">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
             <Bold className="h-4 w-4" />
           </ToggleGroupItem>
@@ -499,7 +511,7 @@ export function toggleDemo() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-      <Separator className="bg-red-500 my-4" />
+      <Separator className="bg-gray-300 my-4" />
       <div>
         <ToggleGroup type="multiple" disabled>
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -521,11 +533,13 @@ export function toggleDemo() {
 }
 export function ToolTipDemo() {
   return (
-    <div className="flex items-center justify-center gap-4 h-full">
+    <div className="flex items-center justify-center gap-4 h-full p-4">
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger className="bg-slate-200 p-2">Hover ME</TooltipTrigger>
-          <TooltipContent>
+          <TooltipTrigger className="bg-gray-200 p-2 rounded-md hover:bg-gray-300 transition-all">
+            Hover ME
+          </TooltipTrigger>
+          <TooltipContent className="bg-black text-white p-2 rounded-lg shadow-lg">
             <p>This is called Tool Tip</p>
           </TooltipContent>
         </Tooltip>
@@ -533,9 +547,14 @@ export function ToolTipDemo() {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline">Hover Me</Button>
+            <Button
+              variant="outline"
+              className="px-4 py-2 hover:bg-gray-200 rounded-md"
+            >
+              Hover Me
+            </Button>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="bg-black text-white p-2 rounded-lg shadow-lg">
             <p>Tool Tips using Button</p>
           </TooltipContent>
         </Tooltip>
@@ -545,20 +564,23 @@ export function ToolTipDemo() {
 }
 export function AlertDemo() {
   return (
-    <div>
-      <Alert className="mb-5">
-        <Terminal className="h-4 w-4" />
-        {/* <PauseIcon className="text-red-500 w-4 h-4" /> */}
-        <AlertTitle>Heads up! (Alert)</AlertTitle>
-        <AlertDescription>
-          You can add components and dependencies to your app using the cli.
+    <div className="space-y-4 p-4">
+      <Alert className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+        <Terminal className="h-5 w-5 text-green-600" />
+        <AlertTitle className="font-semibold text-green-600">
+          Heads up!
+        </AlertTitle>
+        <AlertDescription className="text-green-500">
+          You can add components and dependencies to your app using the CLI.
         </AlertDescription>
       </Alert>
-      <Alert variant="destructive">
-        <AlertCircle className="h-4 w-4" />
-        {/* <PlayIcon className="text-red-500 w-4 h-4" /> */}
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
+      <Alert
+        variant="destructive"
+        className="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg"
+      >
+        <AlertCircle className="h-5 w-5 text-red-600" />
+        <AlertTitle className="font-semibold text-red-600">Error</AlertTitle>
+        <AlertDescription className="text-red-500">
           Your session has expired. Please log in again.
         </AlertDescription>
       </Alert>
@@ -567,12 +589,12 @@ export function AlertDemo() {
 }
 export function ProgressDemo() {
   return (
-    <div className="grid gap-4">
-      <h1 className="text-center font-bold">Progress</h1>
-      <Progress value={2} />
-      <Progress value={23} />
-      <Progress value={63} />
-      <Progress value={43} />
+    <div className="grid gap-4 p-4">
+      <h1 className="text-center font-bold text-lg">Progress</h1>
+      <Progress value={2} className="h-2 bg-blue-300" />
+      <Progress value={23} className="h-2 bg-green-300" />
+      <Progress value={63} className="h-2 bg-yellow-300" />
+      <Progress value={43} className="h-2 bg-red-300" />
     </div>
   );
 }
@@ -722,14 +744,17 @@ export function ToastDemo() {
 }
 export function SheetDemo() {
   return (
-    <div className="flex flex-col items-center justify-evenly h-full">
+    <div className="grid grid-cols-2 grid-rows-2 gap-7 p-6">
+      {/* Sheet 1: From Right */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button>Open Sheet From Right</Button>
+          <Button variant="outline" className="w-full">
+            Open Sheet From Right
+          </Button>
         </SheetTrigger>
         <SheetContent side="right">
           <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
+            <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
               Make changes to your profile here. Click save when you're done.
             </SheetDescription>
@@ -758,18 +783,24 @@ export function SheetDemo() {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" className="w-full">
+                Save Changes
+              </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>
+
+      {/* Sheet 2: From Left */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button>Open Sheet From left</Button>
+          <Button variant="outline" className="w-full">
+            Open Sheet From Left
+          </Button>
         </SheetTrigger>
         <SheetContent side="left">
           <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
+            <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
               Make changes to your profile here. Click save when you're done.
             </SheetDescription>
@@ -798,18 +829,24 @@ export function SheetDemo() {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" className="w-full">
+                Save Changes
+              </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>
+
+      {/* Sheet 3: From Bottom */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button>Open Sheet From bottom</Button>
+          <Button variant="outline" className="w-full">
+            Open Sheet From Bottom
+          </Button>
         </SheetTrigger>
         <SheetContent side="bottom">
           <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
+            <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
               Make changes to your profile here. Click save when you're done.
             </SheetDescription>
@@ -838,18 +875,24 @@ export function SheetDemo() {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" className="w-full">
+                Save Changes
+              </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>
+
+      {/* Sheet 4: From Top */}
       <Sheet>
         <SheetTrigger asChild>
-          <Button>Open Sheet From top</Button>
+          <Button variant="outline" className="w-full">
+            Open Sheet From Top
+          </Button>
         </SheetTrigger>
         <SheetContent side="top">
           <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
+            <SheetTitle>Edit Profile</SheetTitle>
             <SheetDescription>
               Make changes to your profile here. Click save when you're done.
             </SheetDescription>
@@ -878,7 +921,9 @@ export function SheetDemo() {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" className="w-full">
+                Save Changes
+              </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
@@ -888,22 +933,26 @@ export function SheetDemo() {
 }
 export function PopoverDemo() {
   return (
-    <div className="flex items-center justify-center h-full gap-4">
+    <div className="flex items-center justify-center h-full gap-6 p-6">
+      {/* Popover 1 */}
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
+          <Button variant="outline">Open Popover</Button>
         </PopoverTrigger>
-        <PopoverContent>You can add any popover content here</PopoverContent>
+        <PopoverContent className="p-4">
+          You can add any popover content here.
+        </PopoverContent>
       </Popover>
 
+      {/* Popover 2 */}
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">Open Demo</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80">
+        <PopoverContent className="w-80 p-4">
           <div className="grid gap-4">
             <div className="space-y-2">
-              <h4 className="font-medium leading-none">Dimensions</h4>
+              <h4 className="font-medium text-lg leading-none">Dimensions</h4>
               <p className="text-sm text-muted-foreground">
                 Set the dimensions for the layer.
               </p>
@@ -950,7 +999,7 @@ export function PopoverDemo() {
 }
 export function RadioGroupDemo() {
   return (
-    <div className="flex items-center h-full justify-evenly">
+    <div className="flex items-center justify-evenly h-full gap-8 p-6">
       <RadioGroup defaultValue="comfortable">
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="default" id="r1" />
@@ -965,45 +1014,59 @@ export function RadioGroupDemo() {
           <Label htmlFor="r3">Compact</Label>
         </div>
       </RadioGroup>
-      <Separator className="bg-red-500 my-4" orientation="vertical" />
-
-      <RadioGroup defaultValue="option-one">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-one" id="option-one" />
-          <Label htmlFor="option-one">Option One</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-two" id="option-two" />
-          <Label htmlFor="option-two">Option Two</Label>
-        </div>
-      </RadioGroup>
     </div>
   );
 }
 export function PaginationDemo() {
   return (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex items-center justify-center h-full py-6">
       <Pagination>
-        <PaginationContent>
+        <PaginationContent className="flex items-center gap-2">
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious
+              href="#"
+              className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
+            >
+              Prev
+            </PaginationPrevious>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="px-4 py-2 rounded-md text-blue-600 hover:bg-blue-100 transition"
+            >
+              1
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#" isActive>
+            <PaginationLink
+              href="#"
+              isActive
+              className="px-4 py-2 rounded-md text-white bg-blue-600"
+            >
               2
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
+            <PaginationLink
+              href="#"
+              className="px-4 py-2 rounded-md text-blue-600 hover:bg-blue-100 transition"
+            >
+              3
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationEllipsis />
+            <PaginationEllipsis className="px-4 py-2 text-gray-600">
+              ...
+            </PaginationEllipsis>
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext
+              href="#"
+              className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
+            >
+              Next
+            </PaginationNext>
           </PaginationItem>
         </PaginationContent>
       </Pagination>
@@ -1063,3 +1126,64 @@ export function InputOTPDemo() {
     </div>
   );
 }
+export function AccordionDemo() {
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that matches the other
+          components&apos; aesthetic.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you prefer.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+export function AlertDialogDemo() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button
+          variant="outline"
+          className="px-6 py-3 text-lg rounded-lg hover:bg-gray-100 focus:outline-none transition-all"
+        >
+          Show Dialog
+        </Button>
+      </AlertDialogTrigger>
+
+      <AlertDialogContent className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-2xl font-semibold text-gray-800">
+            Are you absolutely sure?
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-gray-600 mt-2">
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+
+        <AlertDialogFooter className="flex justify-between items-center space-x-4 mt-4">
+          <AlertDialogCancel className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-all">
+            Cancel
+          </AlertDialogCancel>
+          <AlertDialogAction className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-all">
+            Continue
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+  
